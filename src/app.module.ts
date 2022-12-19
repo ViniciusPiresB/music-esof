@@ -1,9 +1,11 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { UsersModule } from "./music/music.module";
+import { MusicModule } from "./music/music.module";
 import { DataSource } from "typeorm";
 import { ConfigModule } from "@nestjs/config";
 import { Music } from "./music/entities/music.entity";
+import { User } from "./user/entities/user.entity";
+import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
@@ -15,10 +17,11 @@ import { Music } from "./music/entities/music.entity";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      entities: [Music],
+      entities: [Music, User],
       synchronize: true
     }),
-    UsersModule
+    MusicModule,
+    UserModule
   ],
   controllers: [],
   providers: []
