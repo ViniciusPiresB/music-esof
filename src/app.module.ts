@@ -6,6 +6,7 @@ import { ConfigModule } from "@nestjs/config";
 import { Music } from "./music/entities/music.entity";
 import { User } from "./user/entities/user.entity";
 import { UserModule } from "./user/user.module";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { UserModule } from "./user/user.module";
       synchronize: true
     }),
     MusicModule,
-    UserModule
+    UserModule,
+    AuthModule
   ],
   controllers: [],
   providers: []

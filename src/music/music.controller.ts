@@ -5,12 +5,15 @@ import {
   Body,
   Patch,
   Param,
-  Delete
+  Delete,
+  UseGuards
 } from "@nestjs/common";
 import { MusicService } from "./music.service";
 import { CreateMusicDto } from "./dto/create-music.dto";
 import { UpdateMusicDto } from "./dto/update-music.dto";
+import { AuthGuard } from "@nestjs/passport";
 
+@UseGuards(AuthGuard("jwt"))
 @Controller("music")
 export class MusicController {
   constructor(private readonly musicService: MusicService) {}
