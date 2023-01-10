@@ -31,7 +31,7 @@ const getMovies = async () => {
 const generateTable = async (musics) => {
   const keys = ['id', 'name', 'author', 'duration', 'genre'];
 
-  const tbl = document.createElement('table');
+  const tbl = document.getElementById('table');
   const tblBody = document.createElement('tbody');
 
   for (let i = 0; i < musics.length; i++) {
@@ -51,9 +51,7 @@ const generateTable = async (musics) => {
   tbl.appendChild(tblBody);
   musicsTable.appendChild(tbl);
 
-  tbl.setAttribute('border', '2');
-
-  console.log(musics.length);
+  tbl.setAttribute('border', '2px');
 };
 
 (async () => {
