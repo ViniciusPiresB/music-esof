@@ -9,6 +9,7 @@ const debugMoviesButton = document.getElementById('debug-movies');
 const userToken = document.cookie.replace('userToken=', '');
 
 const insertButton = document.getElementById('insert-button');
+const removeButton = document.getElementById('remove-button');
 
 logoutButton.onclick = () => {
   document.cookie = 'userToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT';
@@ -79,6 +80,32 @@ insertButton.onclick = async () => {
     },
     body: JSON.stringify({ name, author, duration, genre }),
   });
+
+  location.reload();
+};
+
+removeButton.onclick = async () => {
+  const id = document.getElementById('id-field').value;
+
+  if (!id) {
+    document.getElementById('error-message').innerHTML = 'Campo id está vazio.';
+    return;
+  }
+
+  res = await fetch(`http://localhost:8000/music/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json;charset=UTF-8',
+      Authorization: 'Bearer ' + userToken,
+    },
+  });
+
+  if (res.status == 400) {
+    document.getElementById('error-message').innerHTML =
+      'Id de musica inválido';
+
+    return;
+  }
 
   location.reload();
 };
