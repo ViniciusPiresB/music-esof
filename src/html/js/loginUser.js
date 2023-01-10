@@ -17,7 +17,7 @@ const getAccessToken = async (email, password) => {
 
 const userToken = document.cookie.replace('userToken=', '');
 
-if (userToken) window.location.replace('/src/html/loggedPage.html');
+if (userToken) window.location.replace('/logged');
 
 const loginButton = document.getElementById('login-button');
 
@@ -30,5 +30,5 @@ loginButton.onclick = async () => {
 
   document.cookie = tokenCookie;
 
-  window.location.replace('/src/html/loggedPage.html');
+  window.location.replace('/logged');
 };

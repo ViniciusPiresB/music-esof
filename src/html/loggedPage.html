@@ -7,6 +7,33 @@
     <title>Logged Page</title>
 </head>
 <body>
+    <div id="form-insert">
+        <label for="name-of-track">Nome da musica:</label>
+        <input type="text" name="name-of-track" id="name-of-track-field">
+
+        <label for="author">Autor:</label>
+        <input type="text" name="author" id="author-field">
+
+        <label for="duration">Duração(em segundos):</label>
+        <input type="text" name="duration" id="duration-field">
+
+        <label for="genre">Genero:</label>
+        <input type="text" name="genre" id="genre-field">
+
+        <button id="insert-button">Inserir no banco</button>
+    </div>
+
+    <p id="error-message" style="color: red;"></p>
+
+    <div id="musics-table"></div>
+
+    <div id="form-remove">
+        <label for="id-remove-track">Id da musica a ser removida:</label>
+        <input type="number" name="id-remove-track" id="id-field">
+    
+        <button id="remove-button">Remover</button>
+    </div>
+
     <button id="logout-button">Logout</button>
 </body>
 <script src="js/loggedUser.js"></script>
