@@ -7,15 +7,35 @@
     <title>Login page</title>
 </head>
 <body>
-    <label for="login">Email:</label>
-    <input type="text" name="login" id="email-field" placeholder="user@email.com">
+    <div id="login">
+        <h1>Login</h1>
+        <label for="login">Email:</label>
+        <input type="text" name="login" id="login-email-field" placeholder="user@email.com">
+        
+        <label for="login-password">Senha:</label>
+        <input type="password" name="login-password" id="login-password-field">
+        
+        <button id="login-button">Enviar</button>
+        
+    </div>
+    
+    <div id="register">
+        <h1>Registro</h1>
+        <label for="firs-name">Primeiro nome:</label>
+        <input type="text" name="first-name" id="first-name-field">
 
-    <label for="password">Senha:</label>
-    <input type="password" name="password" id="password-field">
+        <label for="last-name">Sobrenome:</label>
+        <input type="text" name="last-name" id="last-name-field">
 
-    <button id="login-button">Enviar</button>
+        <label for="register-email">Email:</label>
+        <input type="email" name="register-email" id="register-email-field">
 
-    <h1 id="error-message"></h1>
+        <label for="register-password">Senha:</label>
+        <input type="password" name="register-password" id="register-password-field">
+
+        <button id="register-button">Cadastrar</button>
+    </div>
+    <p id="error-message" style="color: red;"></p>
 </body>
 <script src="js/loginUser.js"></script>
 </html>

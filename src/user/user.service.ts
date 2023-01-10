@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
@@ -13,9 +17,16 @@ export class UserService {
   ) {}
 
   async create(userDto: CreateUserDto) {
-    const createdUser = this.userRepository.create(userDto);
+    try {
+      const createdUser = this.userRepository.create(userDto);
+      const savedUser = await this.userRepository.save(createdUser);
+      return savedUser;
+    } catch (error) {
+      if (error.code === "23505")
+        throw new ConflictException("A user with this email already exist.");
 
-    return this.userRepository.save(createdUser);
+      throw new BadRequestException(error.message);
+    }
   }
 
   findAll() {
