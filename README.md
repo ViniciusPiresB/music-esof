@@ -15,3 +15,5 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 ```
+
+Access http://localhost:3000/ to go to main page of the project.
